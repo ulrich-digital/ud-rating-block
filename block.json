@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "ud/rating-block",
+    "version": "1.0.0",
+    "title": "UD Block: Rating Block",
+    "category": "widgets",
+    "icon": "star-filled",
+    "description": "Bewertungs-Kachel mit 5-Sterne-System, optionaler Weiterleitung bei 5 Sternen und zeitgesteuerter Anzeige.",
+    "keywords": [
+        "rating",
+        "feedback",
+        "bewertung",
+        "umfrage"
+    ],
+    "textdomain": "ud-rating-block-ud",
+    "editorScript": "file:./build/editor-script.js",
+    "editorStyle": "file:./build/editor-style.css",
+    "style": "file:./build/frontend-style.css",
+    "script": "file:./build/frontend-script.js",
+    "attributes": {},
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "html": false
+    },
+    "render": "file:./includes/render.php"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "rating-block-ud",
+  "version": "1.0.0",
+  "description": "Ein Bewertungs-Block mit 5-Sterne-System, zeitgesteuerter Anzeige und optionalem Weiterleitungslink bei 5 Sternen.",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack --watch --config webpack.config.js"
+  },
+  "author": "ulrich.digital",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^30.15.0"
+  },
+  "dependencies": {
+    "@wordpress/icons": "^10.22.0",
+    "canvas-confetti": "^1.9.4"
+  }
+}

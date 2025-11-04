@@ -1,0 +1,54 @@
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/css/frontend.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+.ud-rating-block {
+  text-align: center;
+  margin: 2em auto;
+  max-width: 400px;
+}
+.ud-rating-block__question {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+.ud-rating-block__stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.ud-rating-block__stars svg {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+.ud-rating-block__stars svg:hover {
+  transform: scale(1.15);
+}
+.ud-rating-block__thankyou, .ud-rating-block__google {
+  margin-top: 1.5em;
+  animation: fadeIn 0.4s ease forwards;
+}
+.ud-rating-block__google-link {
+  display: inline-block;
+  background: #fabb05;
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.ud-rating-block__google-link:hover {
+  background: #ffd84d;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
