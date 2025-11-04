@@ -1,6 +1,6 @@
 # UD Block: Rating
 
-Interaktiver Bewertungs-Block mit 5-Sterne-System, REST-API-Anbindung, doppelter Bewertungslogik und automatischer Google-Weiterleitung.  
+Interaktiver Bewertungs-Block mit 5-Sterne-System, REST-API-Anbindung, doppelter Bewertungslogik und automatischer Google-Weiterleitung.
 Er ermöglicht echte Nutzerbewertungen direkt auf der Website und unterscheidet dabei bewusst zwischen **kritischem Feedback** (intern, mit Kommentar) und **positivem Feedback** (extern, Google-Weiterleitung).
 
 ## Funktionen
@@ -20,11 +20,11 @@ Er ermöglicht echte Nutzerbewertungen direkt auf der Website und unterscheidet 
 
 ## Screenshots
 
-![Frontend-Ansicht](./assets/ud-rating-block-02.png)  
+![Frontend-Ansicht](./assets/ud-rating-block-02.png)
 *Abbildung: Bewertungs-Block.*
 
 
-![Editor-Ansicht](./assets/editor-view.png)  
+![Editor-Ansicht](./assets/editor-view.png)
 *Abbildung: Backend-Ansicht mit gespeicherten Bewertungen und Filteroptionen.*
 
 
@@ -43,8 +43,8 @@ Der Block unterscheidet zwei Szenarien:
 
 -   **Kein Kommentarfeld** (bewusste UX-Entscheidung – kein User füllt zweimal eine Textarea aus).
 -   Die Sterne werden intern gespeichert.
--   Danach erfolgt **eine automatische Weiterleitung**:  
-    → mit 50 % Wahrscheinlichkeit zum **Google-Profil des Kunden** (Einstellung im Backend)  
+-   Danach erfolgt **eine automatische Weiterleitung**:
+    → mit 50 % Wahrscheinlichkeit zum **Google-Profil des Kunden** (Einstellung im Backend)
     → mit 50 % Wahrscheinlichkeit zum **Agentur-Profil von ulrich.digital** (Fallback-Konstante).
 
 Diese Aufteilung sorgt für authentische Nutzerbewertungen und gleichzeitig faire Sichtbarkeit beider Profile.
@@ -86,14 +86,13 @@ Unter **Einstellungen → UD Rating Block** können u. a. konfiguriert werden:
 
 ### Datenschutz & Datenlöschung
 
-Das Plugin speichert Bewertungen in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`).  
-Im Bereich **Verwaltung & System** kann festgelegt werden, ob beim späteren Deinstallieren des Plugins  
+Das Plugin speichert Bewertungen in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`).
+Im Bereich **Verwaltung & System** kann festgelegt werden, ob beim späteren Deinstallieren des Plugins
 auch alle gespeicherten Bewertungen entfernt werden sollen.
 
-**Hinweis:**  
-Die Bewertungen bleiben standardmässig erhalten, bis sie manuell gelöscht werden.  
-Das Entfernen der Datensätze kann nicht rückgängig gemacht werden und sollte nur erfolgen,  
-wenn dies aus Datenschutzgründen (z. B. DSGVO / nDSG) ausdrücklich erforderlich ist.
+**Hinweis:**
+Die Bewertungen bleiben standardmässig erhalten, bis sie manuell gelöscht werden.
+Das Entfernen der Datensätze kann nicht rückgängig gemacht werden.
 
 
 
@@ -112,8 +111,8 @@ wenn dies aus Datenschutzgründen (z. B. DSGVO / nDSG) ausdrücklich erforderlic
 -   **Frontend-Libs:**
     -   `@wordpress/icons`
     -   `canvas-confetti`
--   **Editor-Komponenten:**  
-    `TextControl`, `Button`, `PanelBody` … mit  
+-   **Editor-Komponenten:**
+    `TextControl`, `Button`, `PanelBody` … mit
     `__next40pxDefaultSize={true}` und `__nextHasNoMarginBottom={true}`
 -   **Design:** SCSS-basiert, modulare Struktur, BEM-Namen (`ud-rating-block__stars`, `__question` …)
 -   **Primärfarbe:** `$accent-500 = #fabb05`
@@ -124,5 +123,5 @@ wenn dies aus Datenschutzgründen (z. B. DSGVO / nDSG) ausdrücklich erforderlic
 
 ## Lizenz
 
-Alle Rechte vorbehalten.  
+Alle Rechte vorbehalten.
 Dieses Plugin ist urheberrechtlich geschützt und darf ohne ausdrückliche schriftliche Genehmigung der **ulrich.digital gmbh** weder kopiert, verbreitet, verändert noch weiterverwendet werden.
