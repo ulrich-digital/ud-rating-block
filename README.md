@@ -87,11 +87,14 @@ Unter **Einstellungen → UD Rating Block** können u. a. konfiguriert werden:
 ### Datenschutz & Datenlöschung
 
 Das Plugin speichert Bewertungen in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`).  
-Beim Entfernen des Plugins kann optional festgelegt werden, ob diese Daten vollständig gelöscht werden sollen.  
+Im Bereich **Verwaltung & System** kann festgelegt werden, ob beim späteren Deinstallieren des Plugins  
+auch alle gespeicherten Bewertungen entfernt werden sollen.
 
 **Hinweis:**  
-Das Löschen entfernt sämtliche Bewertungen unwiderruflich aus der Datenbank.  
-Diese Funktion dient der Einhaltung datenschutzrechtlicher Anforderungen (z. B. DSGVO / nDSG).
+Die Bewertungen bleiben standardmässig erhalten, bis sie manuell gelöscht werden.  
+Das Entfernen der Datensätze kann nicht rückgängig gemacht werden und sollte nur erfolgen,  
+wenn dies aus Datenschutzgründen (z. B. DSGVO / nDSG) ausdrücklich erforderlich ist.
+
 
 
 ## Technische Details
