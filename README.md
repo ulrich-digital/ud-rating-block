@@ -84,6 +84,16 @@ Unter **Einstellungen → UD Rating Block** können u. a. konfiguriert werden:
 -   Filter nach Sternezahl oder Zeitraum (7 / 30 Tage)
 -   Einzel- oder Komplettlöschung
 
+### Datenschutz & Datenlöschung
+
+Das Plugin speichert Bewertungen in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`).  
+Beim Entfernen des Plugins kann optional festgelegt werden, ob diese Daten vollständig gelöscht werden sollen.  
+
+**Hinweis:**  
+Das Löschen entfernt sämtliche Bewertungen unwiderruflich aus der Datenbank.  
+Diese Funktion dient der Einhaltung datenschutzrechtlicher Anforderungen (z. B. DSGVO / nDSG).
+
+
 ## Technische Details
 
 -   **Block-Slug:** `ud/rating-block`

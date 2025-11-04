@@ -56,3 +56,13 @@ register_activation_hook(__FILE__, function () {
         }
     }
 });
+
+/**
+ * 🔹 "Einstellungen"-Link in der Plugin-Übersicht anzeigen
+ */
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), function ($links) {
+    $settings_url = admin_url('options-general.php?page=ud_rating_settings');
+    $settings_link = '<a href="' . esc_url($settings_url) . '">' . esc_html__('Einstellungen', 'rating-block-ud') . '</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+});
