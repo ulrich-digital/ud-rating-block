@@ -26,6 +26,7 @@ Er ermöglicht echte Nutzerbewertungen direkt auf der Website und unterscheidet 
 ![Frontend-Ansicht](./assets/Confetti-Splash_2.png)
 *Abbildung: Bewertungs-Block mit Confetti-Splash.*
 
+
 ![Editor-Ansicht](./assets/editor-view.png)
 *Abbildung: Backend-Ansicht mit gespeicherten Bewertungen und Filteroptionen.*
 
