@@ -21,7 +21,7 @@ Er ermöglicht echte Nutzerbewertungen direkt auf der Website und unterscheidet 
 ## Screenshots
 
 ![Frontend-Ansicht](./assets/ud-rating-block-02.png)
-*Bewertungs-Block.*
+*Frontend-Ansicht des Bewertungs-Blocks.*
 
 ![Frontend-Ansicht](./assets/Confetti-Splash_2.png)
 *Bewertungs-Block mit Confetti-Splash.*
