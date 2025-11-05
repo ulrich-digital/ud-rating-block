@@ -21,14 +21,14 @@ Er ermöglicht echte Nutzerbewertungen direkt auf der Website und unterscheidet 
 ## Screenshots
 
 ![Frontend-Ansicht](./assets/ud-rating-block-02.png)
-*Abbildung: Bewertungs-Block.*
+*Bewertungs-Block.*
 
 ![Frontend-Ansicht](./assets/Confetti-Splash_2.png)
-*Abbildung: Bewertungs-Block mit Confetti-Splash.*
+*Bewertungs-Block mit Confetti-Splash.*
 
 
 ![Editor-Ansicht](./assets/editor-view.png)
-*Abbildung: Backend-Ansicht mit gespeicherten Bewertungen und Filteroptionen.*
+*Backend-Ansicht mit gespeicherten Bewertungen und Filteroptionen.*
 
 
 ## Bewertungslogik (UX-Design)
