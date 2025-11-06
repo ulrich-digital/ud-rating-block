@@ -1,0 +1,186 @@
+.ud-rating-block {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  text-align: center;
+  max-width: 420px;
+  width: 280px;
+  padding: 16px 1em;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-size: 0.75em;
+  line-height: 1.2;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+}
+.ud-rating-block.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+.ud-rating-block__question {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 0.25em;
+  line-height: 1.3;
+}
+.ud-rating-block__stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.ud-rating-block__stars svg {
+  width: 38px;
+  height: 38px;
+  transition: transform 0.25s ease, fill 0.2s ease;
+}
+.ud-rating-block__stars svg:hover {
+  transform: scale(1.2);
+}
+.ud-rating-block__stars .ud-star {
+  cursor: pointer;
+}
+.ud-rating-block__stars .ud-star path {
+  fill: transparent;
+  stroke: #777;
+  stroke-width: 2px;
+  transition: fill 0.25s ease, stroke 0.25s ease;
+}
+.ud-rating-block__stars .ud-star.is-filled path {
+  fill: #fabb05;
+  stroke: #fabb05;
+}
+.ud-rating-block__thankyou, .ud-rating-block__google {
+  margin-top: 0.88em;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+.ud-rating-block__thankyou p, .ud-rating-block__google p {
+  line-height: 1.2;
+  font-size: 1em;
+  margin: 0.44em 0 0.66em;
+}
+.ud-rating-block__google {
+  background: var(--wp--preset--color--accent-500);
+  color: white;
+  padding: 6px;
+  border-radius: 10px;
+}
+.ud-rating-block__google-link {
+  margin-bottom: 0.25em;
+  display: inline-block;
+  background: #fabb05;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.55em 1.3em;
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.ud-rating-block__google-link:hover {
+  background: #ffd84d;
+  transform: translateY(-2px);
+}
+.ud-rating-block.is-locked .ud-star {
+  cursor: default;
+}
+.ud-rating-block.is-locked .ud-star path {
+  stroke: #fabb05;
+}
+
+.ud-rating-block__comment {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: all 0.4s ease;
+}
+.ud-rating-block__comment textarea {
+  width: 100%;
+  padding: 0.6em 0.8em;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.2;
+  font-size: 0.9em;
+  transition: border 0.2s ease;
+  margin: 0;
+}
+.ud-rating-block__comment textarea:focus {
+  outline: none;
+  border-color: #fabb05;
+}
+.ud-rating-block__comment p {
+  margin-bottom: 0.25em;
+  background: var(--wp--preset--color--accent-500);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 12px;
+  line-height: 1.25;
+  font-size: 1em;
+}
+.ud-rating-block__comment button {
+  margin-top: 0.5em;
+  background: #fabb05;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 0.45em 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.ud-rating-block__comment button:hover {
+  background: #ffd84d;
+}
+
+.ud-rating-block__comment:not([hidden]) {
+  opacity: 1;
+  max-height: 220px;
+  margin-top: 0.75em;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .ud-rating-block {
+    bottom: 1rem;
+    right: 1rem;
+    width: 240px;
+    padding: 12px;
+    font-size: 0.7em;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  }
+  .ud-rating-block__stars svg {
+    width: 32px;
+    height: 32px;
+  }
+  .ud-rating-block__question {
+    font-size: 1.1em;
+  }
+  .ud-rating-block__google-link,
+  .ud-rating-block__comment button {
+    padding: 0.45em 1em;
+    font-size: 0.95em;
+  }
+  .ud-rating-block__comment textarea {
+    font-size: 0.85em;
+  }
+}/*# sourceMappingURL=frontend.css.map */

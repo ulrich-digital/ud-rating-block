@@ -304,7 +304,90 @@ function ud_rating_render_settings_page() {
 
         <!-- Bewertungen -->
         <section id="tab-reviews" class="ud-tab-content">
-            <h2><?php esc_html_e('Erhaltene Bewertungen', 'rating-block-ud'); ?></h2>
+
+            <h2><?php esc_html_e('Bewertungsübersicht', 'rating-block-ud'); ?></h2>
+
+
+
+
+            <?php
+            /* =============================================================== *\
+                Statistik
+            \* =============================================================== */
+            ?>
+            <?php
+            global $wpdb;
+            $table = $wpdb->prefix . 'ud_rating_reviews';
+
+            $total_reviews  = (int) $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
+            $average_rating = (float) $wpdb->get_var("SELECT AVG(rating) FROM {$table}");
+            $average_rating = round($average_rating, 1);
+
+            $full_stars  = floor($average_rating);
+            $partial_val = ($average_rating - $full_stars) * 100; // z. B. 0.3 → 30 %
+            $empty_stars = 5 - ceil($average_rating);
+
+            echo '<div class="ud-rating-summary">';
+            echo '<div class="ud-rating-summary__row">';
+            echo 'Bewertungen gesamt: <strong>' . esc_html($total_reviews) . '</strong>';
+            echo '</div>';
+
+            echo '<div class="ud-rating-summary__row">';
+            echo '<span class="ud-rating-summary__label">Durchschnittliche Bewertung:</span>';
+            echo '<span class="ud-rating-summary__value">' . esc_html(number_format($average_rating, 1, ',', '')) . '</span>';
+            echo '<div class="ud-rating-summary__stars">';
+
+            // Stern-SVG-Funktion
+            function ud_rating_star_svg($fill = 100) {
+                $id = uniqid('grad_');
+                return '
+	<svg class="ud-star" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<linearGradient id="' . $id . '">
+				<stop offset="' . $fill . '%" stop-color="#fabb05"/>
+				<stop offset="' . $fill . '%" stop-color="#dcdcdc"/>
+			</linearGradient>
+		</defs>
+		<path class="ud-star__path"
+			fill="url(#' . $id . ')"
+			d="M30.17,33.76 L27.09,24.11 C26.96,23.70 27.11,23.24 27.46,22.99 L35.44,17.31 C35.89,16.99 36.00,16.37 35.68,15.92 C35.49,15.65 35.19,15.50 34.86,15.50 L25.08,15.50 C24.64,15.50 24.26,15.22 24.12,14.81 L20.95,4.87 C20.78,4.35 20.22,4.06 19.69,4.23 C19.38,4.32 19.14,4.57 19.04,4.87 L15.86,14.81 C15.73,15.22 15.35,15.50 14.91,15.50 L5.13,15.50 C4.58,15.50 4.13,15.94 4.13,16.50 C4.13,16.82 4.28,17.12 4.55,17.31 L12.53,22.99 C12.88,23.24 13.04,23.70 12.90,24.11 L9.83,33.76 C9.66,34.29 9.95,34.85 10.47,35.02 C10.79,35.12 11.12,35.06 11.38,34.86 L19.39,28.85 C19.75,28.58 20.24,28.58 20.60,28.85 L28.62,34.86 C29.06,35.20 29.68,35.11 30.02,34.67 C30.21,34.41 30.27,34.07 30.17,33.76 Z"/>
+	</svg>';
+            }
+
+            // volle Sterne
+            for ($i = 0; $i < $full_stars; $i++) echo ud_rating_star_svg(100);
+            // teilgefüllter Stern
+            if ($partial_val > 0) echo ud_rating_star_svg($partial_val);
+            // leere Sterne
+            for ($i = 0; $i < $empty_stars; $i++) echo ud_rating_star_svg(0);
+
+            echo '</div>'; // .ud-rating-summary__stars
+            echo '</div>'; // .ud-rating-summary__row
+            echo '</div>'; // .ud-rating-summary
+            ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <?php
+            /* =============================================================== *\
+               Tabelle mit den einzelnen Bewertungen
+            \* =============================================================== */
+            ?>
+
+            <h2><?php esc_html_e('Einzelne Bewertungen', 'rating-block-ud'); ?></h2>
+
             <?php
             global $wpdb;
             $table = $wpdb->prefix . 'ud_rating_reviews';

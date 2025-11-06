@@ -25,9 +25,7 @@ add_action('admin_enqueue_scripts', function ($hook) {
 /**
  * 🔹 Frontend: Custom CSS aus den Settings einbinden
  */
-/**
- * 🔹 Frontend: Custom CSS aus den Settings einbinden
- */
+
 add_action('wp_enqueue_scripts', function () {
 	$custom_css = trim(get_option('ud_rating_custom_css', ''));
 	if ($custom_css) {

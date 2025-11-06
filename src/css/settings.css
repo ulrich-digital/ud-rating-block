@@ -1,6 +1,3 @@
-/*!**********************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/css/settings.scss ***!
-  \**********************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /* ================================================
    🎛️  UD Rating Settings – Layout & Optik
@@ -8,15 +5,18 @@
 .ud-rating-settings-wrap {
   max-width: 900px;
 }
+
 .ud-rating-settings-wrap h1 {
   margin-bottom: 1em;
 }
+
 /* Tabs */
 .ud-rating-tabs {
   margin-bottom: 1.5em;
   display: flex;
   gap: 0.5em;
 }
+
 .ud-rating-tabs .ud-tab-button {
   background: #f0f0f1;
   border: 1px solid #ccc;
@@ -25,11 +25,13 @@
   cursor: pointer;
   font-weight: 500;
 }
+
 .ud-rating-tabs .ud-tab-button.is-active {
   background: #0073aa;
   border-color: #0073aa;
   color: #fff;
 }
+
 /* Sections */
 .form-table {
   margin-top: 1.2em;
@@ -38,16 +40,19 @@
   max-width: 700px;
   border-collapse: collapse;
 }
+
 .form-table th {
   width: 260px;
   padding: 8px 12px;
   vertical-align: top;
-  text-align: right;
+  text-align: left;
   font-weight: 600;
 }
+
 .form-table td {
   padding: 8px 12px;
 }
+
 .form-table input[type=text],
 .form-table input[type=url],
 .form-table input[type=number],
@@ -55,12 +60,14 @@
   width: 100%;
   max-width: 480px;
 }
+
 .form-table p.description {
   font-size: 12.5px;
   color: #555;
   margin-top: 4px;
   margin-bottom: 0;
 }
+
 /* Ulrich.digital – Readonly-Infofelder */
 .form-table input[readonly] {
   background: #f9fafb;
@@ -68,14 +75,17 @@
   cursor: default;
   color: #333;
 }
+
 .form-table input[readonly] + p.description {
   color: #777;
   font-style: italic;
 }
+
 /* Bewertungen-Tab */
 #tab-reviews table.widefat {
   margin-top: 1em;
 }
+
 /* ================================================
    🧭 UD Rating Block – Admin Dashboard Style
    ================================================ */
@@ -83,12 +93,14 @@
   max-width: 960px;
   margin-top: 1.5rem;
 }
+
 /* Tabs oben */
 .ud-rating-tabs {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
+
 .ud-tab-button {
   background: #f6f7f7;
   border: 1px solid #ccd0d4;
@@ -99,14 +111,17 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
 .ud-tab-button:hover {
   background: #e9eaec;
 }
+
 .ud-tab-button.is-active {
   background: #0073aa;
   border-color: #0073aa;
   color: #fff;
 }
+
 /* Abschnitts-Cards */
 .form-table {
   background: #fff;
@@ -115,9 +130,11 @@
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
+
 .form-table td {
   padding: 1rem 1.5rem;
 }
+
 /* Headings mit Emoji / Icon */
 h2 {
   margin-top: 2rem;
@@ -128,18 +145,23 @@ h2 {
   align-items: center;
   gap: 0.5em;
 }
+
 #ud_rating_section_general h2::before {
   content: "🧩";
 }
+
 #ud_rating_section_display h2::before {
   content: "🎉";
 }
+
 #ud_rating_section_texts h2::before {
   content: "💬";
 }
+
 #ud_rating_section_logic h2::before {
   content: "⭐";
 }
+
 /* Tabelle innerhalb Cards */
 .form-table th {
   width: 260px;
@@ -147,9 +169,11 @@ h2 {
   padding: 8px 12px;
   color: #222;
 }
+
 .form-table td {
   padding: 8px 12px;
 }
+
 /* Inputs */
 .form-table input[type=text],
 .form-table input[type=url],
@@ -163,12 +187,14 @@ h2 {
   font-size: 13px;
   transition: border-color 0.2s ease;
 }
+
 .form-table input:focus,
 .form-table textarea:focus {
   border-color: #0073aa;
   box-shadow: 0 0 0 1px #0073aa;
   outline: none;
 }
+
 /* Beschreibungstexte */
 .form-table p.description {
   font-size: 12.5px;
@@ -176,6 +202,7 @@ h2 {
   margin-top: 4px;
   margin-bottom: 0;
 }
+
 /* Readonly (Ulrich.digital) */
 .form-table input[readonly] {
   background: #f9fafb;
@@ -183,28 +210,34 @@ h2 {
   cursor: default;
   color: #444;
 }
+
 .form-table input[readonly] + p.description {
   color: #777;
   font-style: italic;
 }
+
 /* Confetti Toggle schöner */
 input[type=checkbox] {
   transform: scale(1.2);
-  margin-left: 6px;
+  margin-right: 6px;
 }
+
 /* Bewertungen-Tabelle */
 #tab-reviews table.widefat {
   margin-top: 1em;
   border-radius: 12px;
   overflow: hidden;
 }
+
 /* Nur der aktive Tab ist sichtbar */
 .ud-tab-content {
   display: none;
 }
+
 .ud-tab-content.is-active {
   display: block;
 }
+
 /* =============================================================== *\
    Title
 \* =============================================================== */
@@ -215,28 +248,34 @@ input[type=checkbox] {
   margin-bottom: 2em;
   border: 1px solid #c3c4c7;
 }
+
 .ud-rating-summary__row {
   display: flex;
   align-items: center;
   gap: 0.4em;
 }
+
 .ud-rating-summary__label {
   flex-shrink: 0;
 }
+
 .ud-rating-summary__stars {
   display: flex;
   align-items: center;
   gap: 0;
 }
+
 .ud-star {
   width: 20px;
   height: 20px;
 }
+
 .ud-star__path {
   stroke: #fabb05;
   stroke-width: 2px;
 }
+
 .ud-rating-summary__value {
-  margin-right: 0px;
+  margin-left: 0px;
   font-weight: 600;
-}
+}/*# sourceMappingURL=settings.css.map */

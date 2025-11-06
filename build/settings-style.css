@@ -205,5 +205,40 @@ input[type=checkbox] {
 .ud-tab-content.is-active {
   display: block;
 }
+/* =============================================================== *\
+   Title
+\* =============================================================== */
+.ud-rating-summary {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 2em;
+  border: 1px solid #c3c4c7;
+}
+.ud-rating-summary__row {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.ud-rating-summary__label {
+  flex-shrink: 0;
+}
+.ud-rating-summary__stars {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.ud-star {
+  width: 20px;
+  height: 20px;
+}
+.ud-star__path {
+  stroke: #fabb05;
+  stroke-width: 2px;
+}
+.ud-rating-summary__value {
+  margin-left: 0px;
+  font-weight: 600;
+}
 
 /*# sourceMappingURL=settings-style.css.map*/
