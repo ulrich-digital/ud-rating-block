@@ -1,54 +1,47 @@
 import apiFetch from "@wordpress/api-fetch";
 
 function triggerConfirmationAnimation(block) {
-	if (!block) return;
-
 	block.classList.remove("is-celebrating");
 	void block.offsetWidth;
 	block.classList.add("is-celebrating");
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	let userId = localStorage.getItem("ud_rating_user_id");
-	if (!userId) {
-		userId = crypto.randomUUID();
-		localStorage.setItem("ud_rating_user_id", userId);
+function getUserId() {
+	try {
+		let userId = localStorage.getItem("ud_rating_user_id");
+		if (!userId) {
+			userId =
+				typeof window.crypto?.randomUUID === "function"
+					? window.crypto.randomUUID()
+					: `ud-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+			localStorage.setItem("ud_rating_user_id", userId);
+		}
+		return userId;
+	} catch (error) {
+		return `ud-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 	}
-	// 🟢 Cookie setzen – damit PHP dieselbe ID kennt
-	document.cookie = `ud_rating_user_id=${userId}; path=/; max-age=31536000; SameSite=Lax`;
+}
 
+document.addEventListener("DOMContentLoaded", () => {
 	const ratingBlocks = document.querySelectorAll(".ud-rating-block");
 	if (!ratingBlocks.length) return;
 
+	const userId = getUserId();
+	document.cookie = `ud_rating_user_id=${userId}; path=/; max-age=31536000; SameSite=Lax`;
+
 	ratingBlocks.forEach((block) => {
-		const delay = parseInt(block.dataset.delay || "0", 10);
-
-		if (delay > 0) {
-			// Initial ausblenden, um FOUC zu vermeiden
-			block.classList.add("is-delayed");
-			block.style.opacity = "0";
-			block.style.transform = "translateX(120%)";
-			block.style.pointerEvents = "none";
-
-			setTimeout(() => {
-				block.classList.add("is-visible");
-				block.style.opacity = "1";
-				block.style.transform = "translateX(0)";
-				block.style.pointerEvents = "auto";
-			}, delay * 1000);
-		} else {
-			block.classList.add("is-visible");
-			block.style.opacity = "1";
-			block.style.transform = "translateX(0)";
-			block.style.pointerEvents = "auto";
-		}
-
-		const stars = block.querySelectorAll(".ud-rating-block__stars svg");
-		stars.forEach((star, index) => {
-			star.style.setProperty("--ud-rating-star-index", index);
-		});
+		const launcher = block.querySelector(".ud-rating-block__launcher");
+		const panel = block.querySelector(".ud-rating-block__panel");
+		const closeButton = block.querySelector(".ud-rating-block__close");
+		const question = block.querySelector(".ud-rating-block__question");
+		const ratingThanks = block.querySelector(
+			".ud-rating-block__rating-thanks"
+		);
 		const thankyou = block.querySelector(".ud-rating-block__thankyou");
-		const googleSection = block.querySelector(".ud-rating-block__google");
+		const starsContainer = block.querySelector(".ud-rating-block__stars");
+		const starButtons = Array.from(
+			block.querySelectorAll(".ud-rating-block__star-button")
+		);
 		const commentSection = block.querySelector(".ud-rating-block__comment");
 		const commentInput = block.querySelector(
 			".ud-rating-block__comment-input"
@@ -56,107 +49,154 @@ document.addEventListener("DOMContentLoaded", () => {
 		const commentSubmit = block.querySelector(
 			".ud-rating-block__comment-submit"
 		);
+		const googleSection = block.querySelector(".ud-rating-block__google");
+		const googleLink = block.querySelector(".ud-rating-block__google-link");
+		const status = block.querySelector(".ud-rating-block__status");
 
-		const googleLink = block.dataset.googleLink;
-		const commentPlaceholder =
-			block.dataset.commentPlaceholder ||
-			"Möchtest du noch kurz etwas dazu sagen?";
-		const commentSavedText =
-			block.dataset.commentSaved || "Dein Kommentar wurde gespeichert.";
+		if (!launcher || !panel || !starsContainer || !starButtons.length) return;
 
+		const delay = Number.parseInt(block.dataset.delay || "0", 10);
 		let currentRating = 0;
-		let locked = false;
+		let isSaving = false;
 
-		// ⭐ Hover-Effekt
-		stars.forEach((star, i) => {
-			star.addEventListener("mouseenter", () => {
-				if (locked) return;
-				updateStars(i + 1);
-			});
-			star.addEventListener("mouseleave", () => {
-				if (locked) return;
-				updateStars(currentRating);
-			});
+		starButtons.forEach((button, index) => {
+			button.style.setProperty("--ud-rating-star-index", index);
 		});
 
-		// ⭐ Klick – Bewertung wählen
-		stars.forEach((star, index) => {
-			star.addEventListener("click", async () => {
-				if (locked) return;
+		window.setTimeout(() => {
+			block.classList.add("is-visible");
+		}, Math.max(0, delay) * 1000);
 
-				currentRating = index + 1;
-				updateStars(currentRating);
-				thankyou.hidden = false;
+		function setPanelOpen(open) {
+			panel.hidden = !open;
+			launcher.setAttribute("aria-expanded", String(open));
+			block.classList.toggle("is-open", open);
 
-				// 🔒 Direkt nach erstem Klick sperren (keine neuen Bewertungen)
-				locked = true;
-				stars.forEach((s) => (s.style.pointerEvents = "none"));
-				block.classList.add("is-locked");
-
-				// Alle Bewertungen werden gleich gespeichert und erhalten
-				// dieselben optionalen Anschlussmöglichkeiten.
-				if (commentSection) {
-					commentSection.hidden = false;
-					if (commentInput)
-						commentInput.placeholder = commentPlaceholder;
-				}
-				if (googleSection && googleLink) {
-					googleSection.hidden = false;
-				}
-
-				try {
-					await apiFetch({
-						path: "/ud-rating/v1/submit",
-						method: "POST",
-						data: { rating: currentRating, user_id: userId },
-					});
-					if (block.dataset.confirmationAnimation === "1") {
-						triggerConfirmationAnimation(block);
-					}
-				} catch (err) {
-					// Die Kommentar-Schaltfläche ermöglicht einen erneuten Speicherversuch.
-				}
-			});
-		});
-
-		// 💬 Kommentar absenden
-		if (commentSubmit) {
-			commentSubmit.addEventListener("click", async () => {
-				const text = commentInput.value.trim();
-				if (!currentRating) return; // ⚠️ locked entfernt!
-
-				try {
-					await apiFetch({
-						path: "/ud-rating/v1/submit",
-						method: "POST",
-						data: {
-							rating: currentRating,
-							comment: text,
-							user_id: userId,
-						},
-					});
-					const confirmation = document.createElement("p");
-					confirmation.style.fontWeight = "500";
-					confirmation.textContent = commentSavedText;
-					commentSection.replaceChildren(confirmation);
-					lock(); // jetzt sperren
-				} catch (err) {
-					//console.error("❌ Kommentar-Upload fehlgeschlagen:", err);
-				}
-			});
+			if (open) {
+				window.requestAnimationFrame(() => {
+					(currentRating ? closeButton : starButtons[0]).focus();
+				});
+			} else {
+				launcher.focus();
+			}
 		}
 
 		function updateStars(rating) {
-			stars.forEach((star, i) => {
-				star.classList.toggle("is-filled", i < rating);
+			starButtons.forEach((button, index) => {
+				const selected = index < rating;
+				button.querySelector(".ud-star")?.classList.toggle("is-filled", selected);
+				button.setAttribute(
+					"aria-pressed",
+					String(currentRating > 0 && index + 1 === currentRating)
+				);
 			});
+			starsContainer.dataset.rated = String(rating);
 		}
 
-		function lock() {
-			locked = true;
-			block.dataset.locked = "true";
-			stars.forEach((s) => (s.style.pointerEvents = "none"));
-			block.classList.add("is-locked");
+		async function saveRating(comment = "") {
+			if (!currentRating || isSaving) return false;
+			isSaving = true;
+			if (commentSubmit) commentSubmit.disabled = true;
+			starButtons.forEach((button) => (button.disabled = true));
+			if (status) status.textContent = "";
+
+			try {
+				await apiFetch({
+					path: "/ud-rating/v1/submit",
+					method: "POST",
+					data: { rating: currentRating, comment, user_id: userId },
+				});
+
+				if (block.dataset.confirmationAnimation === "1") {
+					triggerConfirmationAnimation(block);
+				}
+				return true;
+			} catch (error) {
+				if (status) status.textContent = "Bitte versuche es erneut.";
+				return false;
+			} finally {
+				isSaving = false;
+				if (commentSubmit) commentSubmit.disabled = false;
+				starButtons.forEach((button) => (button.disabled = false));
+			}
 		}
+
+		function showCommentStep() {
+			block.classList.add("has-rating");
+			block.classList.remove("is-google-step");
+			if (question) question.hidden = true;
+			if (ratingThanks) {
+				ratingThanks.hidden = false;
+				panel.setAttribute("aria-labelledby", ratingThanks.id);
+			}
+			if (thankyou) thankyou.hidden = true;
+			if (commentSection) commentSection.hidden = false;
+			if (googleSection) googleSection.hidden = true;
+			if (status) status.textContent = "";
+		}
+
+		function showGoogleStep() {
+			block.classList.add("has-rating", "is-google-step");
+			if (question) question.hidden = true;
+			if (ratingThanks) ratingThanks.hidden = true;
+			if (thankyou) {
+				thankyou.hidden = false;
+				panel.setAttribute("aria-labelledby", thankyou.id);
+			}
+			if (commentSection) commentSection.hidden = true;
+			if (googleSection) googleSection.hidden = false;
+			if (status) status.textContent = "";
+			googleLink?.focus();
+		}
+
+		launcher.addEventListener("click", () => {
+			setPanelOpen(panel.hidden);
+		});
+
+		closeButton?.addEventListener("click", () => setPanelOpen(false));
+
+		starButtons.forEach((button, index) => {
+			button.addEventListener("mouseenter", () => updateStars(index + 1));
+			button.addEventListener("mouseleave", () => updateStars(currentRating));
+			button.addEventListener("focus", () => {
+				if (!currentRating) updateStars(index + 1);
+			});
+			button.addEventListener("blur", () => updateStars(currentRating));
+			button.addEventListener("click", () => {
+				currentRating = index + 1;
+				updateStars(currentRating);
+				showCommentStep();
+				commentInput?.focus();
+				void saveRating();
+			});
+		});
+
+		commentSubmit?.addEventListener("click", async () => {
+			const comment = commentInput?.value.trim() || "";
+			if (!comment) {
+				commentInput?.setAttribute("aria-invalid", "true");
+				if (status) status.textContent = "Schreib uns bitte kurz deine Meinung.";
+				commentInput?.focus();
+				return;
+			}
+			commentInput?.removeAttribute("aria-invalid");
+			const saved = await saveRating(comment);
+			if (saved) showGoogleStep();
+		});
+
+		commentInput?.addEventListener("input", () => {
+			if (commentInput.value.trim()) {
+				commentInput.removeAttribute("aria-invalid");
+				if (status) status.textContent = "";
+			}
+		});
+
+		googleLink?.addEventListener("click", () => {
+			window.setTimeout(() => setPanelOpen(false), 2000);
+		});
+
+		block.addEventListener("keydown", (event) => {
+			if (event.key === "Escape" && !panel.hidden) setPanelOpen(false);
+		});
 	});
 });

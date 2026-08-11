@@ -5,8 +5,9 @@ Interaktiver WordPress-Block für Sternebewertungen und ergänzende Kommentare. 
 ## Funktionen
 
 - 5-Sterne-Bewertung mit Hover-Effekt
+- Kompakter Feedback-Button als zeitgesteuerter Einstieg
 - Optionales Kommentarfeld nach jeder Bewertung
-- Optionaler Google-Link zum Website-Betreiber oder zu ulrich.digital nach jeder Bewertung
+- Eigener Google-Schritt nach übermitteltem Kommentar
 - Zeitlich begrenzte und verzögerte Einblendung
 - Optionale Star-Glow-Bestätigung nach erfolgreicher Speicherung
 - Speicherung in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`)
@@ -17,21 +18,20 @@ Interaktiver WordPress-Block für Sternebewertungen und ergänzende Kommentare. 
 
 ## Screenshots
 
-![Bewertungsdialog mit ausgefüllten Sternen](./assets/ud-rating-block-02.png)
-*Frontend-Ansicht des Bewertungsdialogs.*
+![Bewertungsdialog im Ausgangszustand](./assets/ud-rating-block-v2.png)
+*Frontend-Ansicht vor der Sterneauswahl.*
 
-![Ausgefüllter Bewertungsdialog](./assets/ud-rating-block-02.png)
-*Bewertungsdialog nach der Sterneauswahl.*
+![Bewertungsdialog mit ausgefüllten Sternen](./assets/ud-rating-block-02-v2.png)
+*Frontend-Ansicht des Bewertungsdialogs.*
 
 ![Auswertung gespeicherter Bewertungen](./assets/editor-view.png)
 *Administrationsansicht mit Statistik, Filtern und Einzelbewertungen.*
 
 ## Ablauf im Frontend
 
-Nach der Auswahl eines Sternwerts speichert das Plugin die Bewertung direkt. Anschliessend stehen allen Nutzern dieselben optionalen Möglichkeiten zur Verfügung:
+Nach der konfigurierten Verzögerung erscheint rechts unten ein kompakter Feedback-Button. Er öffnet den zentralen Bewertungsdialog mit Frage und Sternen. Die Auswahl eines Sternwerts wird direkt gespeichert und führt zum Kommentarfeld. Nach einem übermittelten Kommentar erscheint der eigenständige Google-Schritt.
 
-- einen ergänzenden Kommentar übermitteln
-- die eigene Erfahrung über den angezeigten Link auf Google teilen
+Der Google-Link öffnet sich in einem neuen Tab; der Bewertungsdialog schliesst sich zwei Sekunden später. Über die Schliessen-Schaltfläche oder die Escape-Taste lässt sich der Dialog jederzeit schliessen.
 
 Ist ein Unternehmensprofil hinterlegt, ordnet das Plugin den Google-Link zu gleichen Teilen dem Website-Betreiber oder ulrich.digital als umsetzender Agentur zu. Die Sternezahl beeinflusst diese Zuordnung und die Sichtbarkeit des Links nicht. Fehlt der Link des Website-Betreibers, wird das Agenturprofil verwendet.
 
@@ -50,8 +50,9 @@ Unter **Einstellungen → UD Rating Block** lassen sich folgende Bereiche konfig
 ### Texte und Benutzerführung
 
 - Frage an die Nutzer
+- Text des Feedback-Buttons
 - Dankestext
-- Platzhalter und Bestätigungstext für Kommentare
+- Platzhalter für das Kommentarfeld
 - Beschriftung der Absende-Schaltfläche
 
 ### Google-Verknüpfung und Attribution
@@ -61,7 +62,7 @@ Unter **Einstellungen → UD Rating Block** lassen sich folgende Bereiche konfig
 - Beschriftung des Links
 - fest hinterlegte Angaben von ulrich.digital für die Agentur-Zuordnung
 
-Der Link wird nach jeder Sternebewertung angeboten. Die Veröffentlichung einer Google-Rezension bleibt eine freiwillige, separate Handlung.
+Der Link wird nach einem übermittelten Kommentar angeboten. Die Veröffentlichung einer Google-Rezension bleibt eine freiwillige, separate Handlung.
 
 ### Darstellung und Verwaltung
 

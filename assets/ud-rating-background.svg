@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160" role="img" aria-labelledby="title desc">
+	<title id="title">Ruhige Website-Kulisse in Off-White und Salbeigrün</title>
+	<desc id="desc">Abstrakte Website-Oberfläche mit seitlicher Navigation, grosser Inhaltsfläche, botanischem Motiv und dezenten Inhaltsplatzhaltern.</desc>
+
+	<rect width="3840" height="2160" fill="#fbfaf7"/>
+
+	<!-- Linke Navigation -->
+	<g fill="#dfe5d8">
+		<rect x="170" y="250" width="330" height="42" rx="21"/>
+		<rect x="170" y="485" width="560" height="560" rx="34" fill="#e9ede3"/>
+		<rect x="170" y="1160" width="560" height="32" rx="16"/>
+		<rect x="170" y="1245" width="560" height="25" rx="12.5" opacity=".8"/>
+		<rect x="170" y="1320" width="560" height="25" rx="12.5" opacity=".8"/>
+		<rect x="170" y="1395" width="385" height="25" rx="12.5" opacity=".65"/>
+		<rect x="170" y="1715" width="410" height="54" rx="27"/>
+	</g>
+
+	<!-- Grosse Inhaltsfläche -->
+	<rect x="880" y="210" width="2760" height="1180" rx="42" fill="#eef1e9"/>
+	<rect x="930" y="260" width="2660" height="1080" rx="30" fill="#f4f5ef" opacity=".42"/>
+
+	<!-- Botanisches Motiv -->
+	<g opacity=".9">
+		<line x1="3480" y1="1318" x2="3454" y2="1135" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3454" y1="1135" x2="3407" y2="949" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3407" y1="949" x2="3335" y2="772" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3335" y1="772" x2="3244" y2="608" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3244" y1="608" x2="3128" y2="451" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3128" y1="451" x2="3003" y2="316" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3335" y1="772" x2="3384" y2="626" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3384" y1="626" x2="3424" y2="468" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3424" y1="468" x2="3443" y2="297" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3244" y1="608" x2="3141" y2="527" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3141" y1="527" x2="3035" y2="428" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3035" y1="428" x2="2941" y2="330" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3407" y1="949" x2="3471" y2="843" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3471" y1="843" x2="3531" y2="717" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3531" y1="717" x2="3593" y2="579" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3128" y1="451" x2="3038" y2="454" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3038" y1="454" x2="2948" y2="481" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3454" y1="1135" x2="3344" y2="1108" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3344" y1="1108" x2="3228" y2="1108" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+		<line x1="3228" y1="1108" x2="3105" y2="1127" stroke="#dce3d4" stroke-width="18" stroke-linecap="round"/>
+	</g>
+	<g fill="#dce3d4" opacity=".9">
+		<path d="M3442 297c-119 53-202 162-221 294 119-52 202-162 221-294Z"/>
+		<path d="M2951 330c17 136 95 250 214 320-18-136-95-250-214-320Z"/>
+		<path d="M3594 579c-119 26-218 101-275 210 119-26 218-101 275-210Z"/>
+		<path d="M2948 481c52 96 143 160 251 177-52-96-143-160-251-177Z"/>
+		<path d="M3106 1127c116-85 260-112 401-76-116 85-260 112-401 76Z"/>
+		<path d="M3450 1137c113-10 218 26 302 102-113 10-218-26-302-102Z"/>
+		<path d="M2958 452c-66-41-137-51-213-31 66 41 137 51 213 31Z"/>
+	</g>
+
+	<!-- Unterer Inhaltsbereich -->
+	<g fill="#dfe5d8">
+		<rect x="980" y="1575" width="1040" height="38" rx="19"/>
+		<rect x="980" y="1710" width="1720" height="26" rx="13" opacity=".78"/>
+		<rect x="980" y="1790" width="1620" height="26" rx="13" opacity=".72"/>
+		<rect x="980" y="1870" width="1390" height="26" rx="13" opacity=".65"/>
+	</g>
+	<rect x="2940" y="1570" width="650" height="440" rx="34" fill="#e9ede3"/>
+</svg>

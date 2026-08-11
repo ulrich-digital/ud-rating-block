@@ -79,13 +79,13 @@ add_action('admin_init', function () {
     // Verzögerung
     register_setting('ud_rating_settings_group', 'ud_rating_display_delay', [
         'type' => 'integer',
-        'default' => 5,
+        'default' => 6,
         'sanitize_callback' => 'absint',
     ]);
     add_settings_field(
         'ud_rating_display_delay',
         __('Verzögerung der Einblendung', 'rating-block-ud'),
-        fn() => print('<input type="number" name="ud_rating_display_delay" min="0" step="1" value="' . esc_attr(get_option('ud_rating_display_delay', 5)) . '"> <p class="description">' . esc_html__('Zeit in Sekunden, bis der Block angezeigt wird (0 = sofort).', 'rating-block-ud') . '</p>'),
+        fn() => print('<input type="number" name="ud_rating_display_delay" min="0" step="1" value="' . esc_attr(get_option('ud_rating_display_delay', 6)) . '"> <p class="description">' . esc_html__('Zeit in Sekunden, bis der Feedback-Button angezeigt wird (0 = sofort).', 'rating-block-ud') . '</p>'),
         'ud_rating_settings',
         'ud_rating_section_schedule'
     );
@@ -102,11 +102,12 @@ add_action('admin_init', function () {
     );
 
     $text_fields = [
-        'ud_rating_text_question' => ['Frage an Nutzer', 'Gefällt dir die neue Webseite?'],
-        'ud_rating_text_thanks' => ['Dankestext nach Bewertung', 'Vielen Dank für dein Feedback!'],
+        'ud_rating_text_launcher' => ['Text des Feedback-Buttons', 'Feedback'],
+        'ud_rating_text_question' => ['Frage an Nutzer', 'Gefällt Dir die neue Website?'],
+        'ud_rating_text_rating_thanks' => ['Dankestext nach Sterneauswahl', 'Vielen Dank für deine Bewertung.'],
+        'ud_rating_text_thanks' => ['Dankestext nach Kommentar', 'Vielen Dank für dein Feedback.'],
         'ud_rating_text_comment_placeholder' => ['Platzhalter für Kommentarfeld', 'Deine Meinung interessiert uns.'],
-        'ud_rating_text_after_comment' => ['Text nach Kommentar', 'Dein Kommentar wurde gespeichert.'],
-        'ud_rating_text_comment_button' => ['Button-Text für Kommentar absenden', 'Absenden'],
+        'ud_rating_text_comment_button' => ['Button-Text für Kommentar absenden', 'Feedback senden'],
     ];
 
     foreach ($text_fields as $option => [$label, $default]) {
@@ -163,13 +164,13 @@ add_action('admin_init', function () {
 
     register_setting('ud_rating_settings_group', 'ud_rating_text_button_company', [
         'type' => 'string',
-        'default' => 'Bewertung teilen',
+        'default' => 'Bewertung auf Google teilen',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     add_settings_field(
         'ud_rating_text_button_company',
         __('Button-Text', 'rating-block-ud'),
-        fn() => print('<input type="text" name="ud_rating_text_button_company" value="' . esc_attr(get_option('ud_rating_text_button_company', '')) . '" class="regular-text">'),
+        fn() => print('<input type="text" name="ud_rating_text_button_company" value="' . esc_attr(get_option('ud_rating_text_button_company', 'Bewertung auf Google teilen')) . '" class="regular-text">'),
         'ud_rating_settings',
         'ud_rating_section_google'
     );
