@@ -20,7 +20,7 @@ defined('ABSPATH') || exit;
 foreach ([
     'db.php',               // Datenbank-Tabelle für Bewertungen
     'rest-api.php',         // REST-Endpunkte für Bewertungs-Speicherung
-    'helpers.php',          // Allgemeine Hilfsfunktionen (z. B. Google-Link)
+    'helpers.php',          // Allgemeine Hilfsfunktionen und Agentur-Zuordnung
     'block-register.php',   // Block-Registrierung via block.json
     'enqueue.php',          // Enqueue von Styles/Scripts
     'render.php',            // PHP-Rendering des Blocks
@@ -43,7 +43,6 @@ register_activation_hook(__FILE__, function () {
         'ud_rating_text_comment_placeholder'  => 'Deine Meinung interessiert uns.',
         'ud_rating_text_after_comment'        => 'Dein Kommentar wurde gespeichert.',
         'ud_rating_text_comment_button'       => 'Absenden',
-        'ud_rating_min_stars_for_google'      => 4,
         'ud_rating_google_link_company'       => '',
         'ud_rating_text_google_company'       => 'Möchtest du deine Bewertung auf Google teilen?',
         'ud_rating_text_button_company'       => 'Bewertung teilen',

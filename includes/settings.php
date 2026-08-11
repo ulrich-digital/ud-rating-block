@@ -135,19 +135,6 @@ add_action('admin_init', function () {
         'ud_rating_settings'
     );
 
-    register_setting('ud_rating_settings_group', 'ud_rating_min_stars_for_google', [
-        'type' => 'integer',
-        'default' => 4,
-        'sanitize_callback' => fn($v) => max(1, min(5, (int)$v)),
-    ]);
-    add_settings_field(
-        'ud_rating_min_stars_for_google',
-        __('Mindestbewertung für Google-Link', 'rating-block-ud'),
-        fn() => print('<input type="range" name="ud_rating_min_stars_for_google" min="1" max="5" step="1" value="' . esc_attr(get_option('ud_rating_min_stars_for_google', 4)) . '" oninput="this.nextElementSibling.value=this.value"><output style="font-weight:600;">' . esc_html(get_option('ud_rating_min_stars_for_google', 4)) . '</output>'),
-        'ud_rating_settings',
-        'ud_rating_section_google'
-    );
-
     register_setting('ud_rating_settings_group', 'ud_rating_google_link_company', [
         'type' => 'string',
         'default' => '',
@@ -155,7 +142,7 @@ add_action('admin_init', function () {
     ]);
     add_settings_field(
         'ud_rating_google_link_company',
-        __('Google-Link (Kundenprofil)', 'rating-block-ud'),
+        __('Google-Link des Unternehmens', 'rating-block-ud'),
         fn() => print('<input type="url" name="ud_rating_google_link_company" value="' . esc_attr(get_option('ud_rating_google_link_company', '')) . '" class="regular-text" placeholder="https://g.page/.../review">'),
         'ud_rating_settings',
         'ud_rating_section_google'
@@ -188,7 +175,7 @@ add_action('admin_init', function () {
     );
 
     add_settings_field(
-        'ud_rating_fallback_info',
+        'ud_rating_attribution_info',
         __('Einträge von ulrich.digital', 'rating-block-ud'),
         function () {
             echo '<input type="text" readonly class="regular-text" value="' . esc_attr(UD_RATING_FALLBACK_LINK) . '" style="opacity:.6;">';
@@ -201,7 +188,6 @@ add_action('admin_init', function () {
         'ud_rating_settings',
         'ud_rating_section_google'
     );
-
 
     /* =============================================================== *\
 	   🎨 Darstellung & Verhalten

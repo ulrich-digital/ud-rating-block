@@ -7,12 +7,11 @@
 defined('ABSPATH') || exit;
 
 // ===============================================================
-// 🌟 Ulrich.Digital – Fallback Defaults
+// 🌟 ulrich.digital – Angaben für die Agentur-Zuordnung
 // ===============================================================
 define('UD_RATING_FALLBACK_LINK', 'https://g.page/r/CSweGOK6JgY0EB0/review');
 define('UD_RATING_FALLBACK_TEXT', 'Möchtest du die Macher dahinter bewerten?');
 define('UD_RATING_FALLBACK_BUTTON', 'Agentur bewerten');
-
 
 /**
  * Prüft, ob der aktuelle Zeitpunkt innerhalb des definierten Anzeigezeitraums liegt.

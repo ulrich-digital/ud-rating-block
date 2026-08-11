@@ -1069,7 +1069,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentInput = block.querySelector(".ud-rating-block__comment-input");
     const commentSubmit = block.querySelector(".ud-rating-block__comment-submit");
     const googleLink = block.dataset.googleLink;
-    const minStarsForGoogle = parseInt(block.dataset.minStarsGoogle, 10) || 5;
     const commentPlaceholder = block.dataset.commentPlaceholder || "Möchtest du noch kurz etwas dazu sagen?";
     const commentSavedText = block.dataset.commentSaved || "Dein Kommentar wurde gespeichert.";
     let currentRating = 0;
@@ -1100,31 +1099,29 @@ document.addEventListener("DOMContentLoaded", () => {
         stars.forEach(s => s.style.pointerEvents = "none");
         block.classList.add("is-locked");
 
-        // Google-Flow (sofort speichern + Google-Link anzeigen)
-        if (googleLink && currentRating >= minStarsForGoogle) {
-          try {
-            await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
-              path: "/ud-rating/v1/submit",
-              method: "POST",
-              data: {
-                rating: currentRating,
-                user_id: userId
-              }
-            });
-            googleSection.hidden = false;
-            if (block.dataset.confetti === "1") {
-              triggerConfettiForward(block);
-            }
-          } catch (err) {
-            //console.error("❌ Google-Flow-Fehler:", err);
-          }
-          return;
-        }
-
-        // Kommentar-Flow (Textfeld zeigen)
+        // Alle Bewertungen werden gleich gespeichert und erhalten
+        // dieselben optionalen Anschlussmöglichkeiten.
         if (commentSection) {
           commentSection.hidden = false;
           if (commentInput) commentInput.placeholder = commentPlaceholder;
+        }
+        if (googleSection && googleLink) {
+          googleSection.hidden = false;
+        }
+        try {
+          await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+            path: "/ud-rating/v1/submit",
+            method: "POST",
+            data: {
+              rating: currentRating,
+              user_id: userId
+            }
+          });
+          if (block.dataset.confetti === "1") {
+            triggerConfettiForward(block);
+          }
+        } catch (err) {
+          // Die Kommentar-Schaltfläche ermöglicht einen erneuten Speicherversuch.
         }
       });
     });
@@ -1145,7 +1142,10 @@ document.addEventListener("DOMContentLoaded", () => {
               user_id: userId
             }
           });
-          commentSection.innerHTML = `<p style="font-weight:500;">${commentSavedText}</p>`;
+          const confirmation = document.createElement("p");
+          confirmation.style.fontWeight = "500";
+          confirmation.textContent = commentSavedText;
+          commentSection.replaceChildren(confirmation);
           lock(); // jetzt sperren
         } catch (err) {
           //console.error("❌ Kommentar-Upload fehlgeschlagen:", err);

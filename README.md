@@ -1,124 +1,97 @@
 # UD Block: Rating
 
-Interaktiver Bewertungs-Block mit 5-Sterne-System, REST-API-Anbindung, doppelter Bewertungslogik und automatischer Google-Weiterleitung.
-Er ermöglicht echte Nutzerbewertungen direkt auf der Website und unterscheidet dabei bewusst zwischen **kritischem Feedback** (intern, mit Kommentar) und **positivem Feedback** (extern, Google-Weiterleitung).
+Interaktiver WordPress-Block für Sternebewertungen und ergänzende Kommentare. Bewertungen werden über eine REST-Schnittstelle in einer eigenen Datenbanktabelle gespeichert und im WordPress-Backend ausgewertet.
 
 ## Funktionen
 
--   5-Sterne-Bewertung mit animiertem Hover-Effekt
--   Kommentarfeld bei niedriger Bewertung – wird lokal gespeichert
--   Automatische Google-Weiterleitung bei hoher Bewertung (zufällige 50/50-Verteilung zwischen Kunden- und Agenturprofil)
--   Doppelte Bewertungslogik (siehe unten)
--   Zeitgesteuerte Einblendung nach frei definierbarer Verzögerung
--   Begrenzung der Anzeigehäufigkeit pro Nutzer (z. B. max. 3 Mal)
--   Optionaler Confetti-Effekt beim Absenden
--   Speicherung aller Bewertungen in eigener Datenbanktabelle (`wp_ud_rating_reviews`)
--   Administrationsansicht mit Filterung und Löschoptionen
--   Umfassende Einstellungsseite im Backend
--   Kompatibel mit Full Site Editing (FSE)
--   Sicheres Sanitizing und Berechtigungsprüfung
+- 5-Sterne-Bewertung mit Hover-Effekt
+- Optionales Kommentarfeld nach jeder Bewertung
+- Optionaler Google-Link zum Website-Betreiber oder zu ulrich.digital nach jeder Bewertung
+- Zeitlich begrenzte und verzögerte Einblendung
+- Optionaler Konfetti-Effekt nach erfolgreicher Speicherung
+- Speicherung in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`)
+- Administrationsansicht mit Durchschnitt, Filtern und Löschoptionen
+- Konfigurierbare Texte und eigenes Frontend-CSS
+- Dynamisches serverseitiges Rendering
+- Unterstützung für Wide- und Full-Alignment
 
 ## Screenshots
 
-![Frontend-Ansicht](./assets/ud-rating-block-02.png)
-*Frontend-Ansicht des Bewertungs-Blocks.*
+![Bewertungsdialog mit ausgefüllten Sternen](./assets/ud-rating-block-02.png)
+*Frontend-Ansicht des Bewertungsdialogs.*
 
-![Frontend-Ansicht](./assets/Confetti-Splash_2.png)
-*Bewertungs-Block mit Confetti-Splash.*
+![Bewertungsdialog mit Konfetti](./assets/Confetti-Splash_2.png)
+*Optionale Konfetti-Animation nach der Speicherung.*
 
+![Auswertung gespeicherter Bewertungen](./assets/editor-view.png)
+*Administrationsansicht mit Statistik, Filtern und Einzelbewertungen.*
 
-![Editor-Ansicht](./assets/editor-view.png)
-*Backend-Ansicht mit gespeicherten Bewertungen und Filteroptionen.*
+## Ablauf im Frontend
 
+Nach der Auswahl eines Sternwerts speichert das Plugin die Bewertung direkt. Anschliessend stehen allen Nutzern dieselben optionalen Möglichkeiten zur Verfügung:
 
-## Bewertungslogik (UX-Design)
+- einen ergänzenden Kommentar übermitteln
+- die eigene Erfahrung über den angezeigten Link auf Google teilen
 
-Der Block unterscheidet zwei Szenarien:
+Ist ein Unternehmensprofil hinterlegt, ordnet das Plugin den Google-Link zu gleichen Teilen dem Website-Betreiber oder ulrich.digital als umsetzender Agentur zu. Die Sternezahl beeinflusst diese Zuordnung und die Sichtbarkeit des Links nicht. Fehlt der Link des Website-Betreibers, wird das Agenturprofil verwendet.
 
-### 1. Bewertung **unter** dem Mindestwert
+Eine zufällig erzeugte Browser-ID wird im Local Storage und als Cookie gespeichert. Damit erkennt das serverseitige Rendering, ob dieser Browser bereits eine Bewertung abgegeben hat. Der Entwicklermodus erlaubt wiederholte Bewertungen zu Testzwecken.
 
--   Es erscheint **ein Kommentarfeld** („Möchtest du noch kurz etwas dazu sagen?“).
--   Nach dem Absenden werden **Sterne + Kommentar** lokal gespeichert.
--   Keine Weiterleitung zu Google.
--   Ziel: **Niedrigere Bewertungen intern behalten**, um echtes Feedback zu erhalten.
+## Einstellungen
 
-### 2. Bewertung **gleich oder über** dem Mindestwert
+Unter **Einstellungen → UD Rating Block** lassen sich folgende Bereiche konfigurieren:
 
--   **Kein Kommentarfeld** (bewusste UX-Entscheidung – kein User füllt zweimal eine Textarea aus).
--   Die Sterne werden intern gespeichert.
--   Danach erfolgt **eine automatische Weiterleitung**:
-    → mit 50 % Wahrscheinlichkeit zum **Google-Profil des Kunden** (Einstellung im Backend)
-    → mit 50 % Wahrscheinlichkeit zum **Agentur-Profil von ulrich.digital** (Fallback-Konstante).
+### Anzeigezeitraum
 
-Diese Aufteilung sorgt für authentische Nutzerbewertungen und gleichzeitig faire Sichtbarkeit beider Profile.
+- Startdatum
+- Enddatum
+- Verzögerung der Einblendung in Sekunden
 
-## Admin-Einstellungen
+### Texte und Benutzerführung
 
-Unter **Einstellungen → UD Rating Block** können u. a. konfiguriert werden:
+- Frage an die Nutzer
+- Dankestext
+- Platzhalter und Bestätigungstext für Kommentare
+- Beschriftung der Absende-Schaltfläche
 
-### Allgemein
+### Google-Verknüpfung und Attribution
 
--   Entwicklermodus (unbegrenzte Test-Bewertungen)
--   Start- / Enddatum der Anzeige
--   Maximale Anzeigen pro Nutzer
+- URL des Google-Unternehmensprofils
+- Begleittext
+- Beschriftung des Links
+- fest hinterlegte Angaben von ulrich.digital für die Agentur-Zuordnung
 
-### Darstellung & Verhalten
+Der Link wird nach jeder Sternebewertung angeboten. Die Veröffentlichung einer Google-Rezension bleibt eine freiwillige, separate Handlung.
 
--   Verzögerung der Einblendung (Sekunden)
--   Eigenes CSS (automatisch im Frontend eingebunden)
+### Darstellung und Verwaltung
 
-### Texte & Beschriftungen
+- Konfetti-Animation
+- eigenes Frontend-CSS
+- Entwicklermodus
+- Löschen der Bewertungsdaten bei der Deinstallation
 
--   Frage an Nutzer
--   Dankestext
--   Platzhalter / Buttontexte für Kommentarbereich
+## Auswertung
 
-### Bewertungslogik & Google-Link
+Die Registerkarte **Bewertungen** zeigt:
 
--   Mindestbewertung für Google-Weiterleitung (Standard = 4 Sterne)
--   Aktivierung des Confetti-Effekts
--   Google-Profil-URL des Kunden
--   Texte für Frage + Button zur Google-Bewertung
--   Feste Fallback-Einträge von **ulrich.digital** (nur lesbar)
-
-### Bewertungen
-
--   Listenansicht aller gesammelten Bewertungen
--   Filter nach Sternezahl oder Zeitraum (7 / 30 Tage)
--   Einzel- oder Komplettlöschung
-
-### Datenschutz & Datenlöschung
-
-Das Plugin speichert Bewertungen in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`).
-Im Bereich **Verwaltung & System** kann festgelegt werden, ob beim späteren Deinstallieren des Plugins
-auch alle gespeicherten Bewertungen entfernt werden sollen.
-
-**Hinweis:**
-Die Bewertungen bleiben standardmässig erhalten, bis sie manuell gelöscht werden.
-Das Entfernen der Datensätze kann nicht rückgängig gemacht werden.
-
-
+- Gesamtzahl und durchschnittliche Sternebewertung
+- Filter nach Sternezahl
+- Filter für die letzten 7 oder 30 Tage
+- Sterne, Kommentare, gekürzte Browser-ID und Zeitpunkt
+- Funktionen zum einzelnen oder vollständigen Löschen der Einträge
 
 ## Technische Details
 
--   **Block-Slug:** `ud/rating-block`
--   **Render-Modus:** dynamisch (PHP → `render.php`)
--   **REST-Routen:**
-    -   `ud-rating/v1/submit` → Bewertung speichern
-    -   `ud-rating/v1/stats` → Statistikdaten abrufen
--   **DB-Tabelle:** `wp_ud_rating_reviews`
--   **Fallback-Konstanten:**
-    -   `UD_RATING_FALLBACK_LINK`
-    -   `UD_RATING_FALLBACK_TEXT`
-    -   `UD_RATING_FALLBACK_BUTTON`
--   **Frontend-Libs:**
-    -   `@wordpress/icons`
-    -   `canvas-confetti`
--   **Editor-Komponenten:**
-    `TextControl`, `Button`, `PanelBody` … mit
-    `__next40pxDefaultSize={true}` und `__nextHasNoMarginBottom={true}`
--   **Design:** SCSS-basiert, modulare Struktur, BEM-Namen (`ud-rating-block__stars`, `__question` …)
--   **Primärfarbe:** `$accent-500 = #fabb05`
+- **Block-Slug:** `ud/rating-block`
+- **Render-Modus:** dynamisch über `includes/render.php`
+- **REST-Routen:**
+  - `POST /ud-rating/v1/submit`
+  - `GET /ud-rating/v1/list`
+  - `GET /ud-rating/v1/stats`
+- **Datenbanktabelle:** `wp_ud_rating_reviews`
+- **Attributionsangaben:** `UD_RATING_FALLBACK_LINK`, `UD_RATING_FALLBACK_TEXT`, `UD_RATING_FALLBACK_BUTTON`
+- **Frontend-Bibliotheken:** `@wordpress/api-fetch`, `canvas-confetti`
+- **Styles:** SCSS mit BEM-Klassennamen
 
 ## Autor
 
@@ -126,5 +99,4 @@ Das Entfernen der Datensätze kann nicht rückgängig gemacht werden.
 
 ## Lizenz
 
-Alle Rechte vorbehalten.
-Dieses Plugin ist urheberrechtlich geschützt und darf ohne ausdrückliche schriftliche Genehmigung der **ulrich.digital gmbh** weder kopiert, verbreitet, verändert noch weiterverwendet werden.
+Alle Rechte vorbehalten. Dieses Plugin ist urheberrechtlich geschützt und darf nur mit ausdrücklicher schriftlicher Genehmigung der ulrich.digital gmbh kopiert, verbreitet, verändert oder weiterverwendet werden.

@@ -1,7 +1,7 @@
 {
   "name": "rating-block-ud",
   "version": "1.0.0",
-  "description": "Ein Bewertungs-Block mit 5-Sterne-System, zeitgesteuerter Anzeige und optionalem Weiterleitungslink bei 5 Sternen.",
+  "description": "Ein Bewertungs-Block mit 5-Sterne-System, zeitgesteuerter Anzeige, Kommentarfeld und optionalem Google-Link.",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack --watch --config webpack.config.js"

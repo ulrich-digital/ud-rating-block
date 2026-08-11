@@ -6,7 +6,7 @@
     "title": "UD Block: Rating Block",
     "category": "widgets",
     "icon": "star-filled",
-    "description": "Bewertungs-Kachel mit 5-Sterne-System, optionaler Weiterleitung bei 5 Sternen und zeitgesteuerter Anzeige.",
+    "description": "Bewertungs-Kachel mit 5-Sterne-System, Kommentarfeld, optionalem Google-Link und zeitgesteuerter Anzeige.",
     "keywords": [
         "rating",
         "feedback",
