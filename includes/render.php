@@ -122,7 +122,7 @@ function ud_rating_render_block(): string {
         data-delay="<?php echo esc_attr($delay); ?>"
         data-dev-mode="<?php echo $dev_mode ? '1' : '0'; ?>">
 
-        <div id="<?php echo esc_attr($panel_id); ?>" class="ud-rating-block__panel" role="dialog" aria-labelledby="<?php echo esc_attr($panel_id); ?>-title" hidden>
+        <div id="<?php echo esc_attr($panel_id); ?>" class="ud-rating-block__panel" role="dialog" aria-modal="true" aria-labelledby="<?php echo esc_attr($panel_id); ?>-title" hidden>
             <button type="button" class="ud-rating-block__close" aria-label="<?php esc_attr_e('Feedback schliessen', 'rating-block-ud'); ?>">
                 <svg viewBox="0 0 21 21" aria-hidden="true" focusable="false"><path d="M11.315,10.47,16.47,5.315l-.845-.845L10.47,9.625,5.315,4.47l-.845.845L9.625,10.47,4.47,15.625l.845.845,5.155-5.155,5.155,5.155.845-.845Z"/></svg>
             </button>

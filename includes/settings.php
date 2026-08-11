@@ -272,14 +272,15 @@ function ud_rating_render_settings_page() {
 ?>
     <div class="wrap ud-rating-settings-wrap">
         <h1><?php esc_html_e('UD Rating Block', 'rating-block-ud'); ?></h1>
+        <p class="ud-rating-settings-intro"><?php esc_html_e('Feedback, Anzeige und Google-Verknüpfung zentral verwalten.', 'rating-block-ud'); ?></p>
 
-        <nav class="ud-rating-tabs">
-            <button class="ud-tab-button is-active" data-tab="tab-settings"><?php esc_html_e('Einstellungen', 'rating-block-ud'); ?></button>
-            <button class="ud-tab-button" data-tab="tab-reviews"><?php esc_html_e('Bewertungen', 'rating-block-ud'); ?></button>
+        <nav class="ud-rating-tabs" role="tablist" aria-label="<?php esc_attr_e('Bereich auswählen', 'rating-block-ud'); ?>">
+            <button type="button" id="ud-rating-tab-settings" class="ud-tab-button is-active" role="tab" aria-selected="true" aria-controls="tab-settings" data-tab="tab-settings"><?php esc_html_e('Einstellungen', 'rating-block-ud'); ?></button>
+            <button type="button" id="ud-rating-tab-reviews" class="ud-tab-button" role="tab" aria-selected="false" aria-controls="tab-reviews" data-tab="tab-reviews"><?php esc_html_e('Bewertungen', 'rating-block-ud'); ?></button>
         </nav>
 
         <!-- Einstellungen -->
-        <section id="tab-settings" class="ud-tab-content is-active">
+        <section id="tab-settings" class="ud-tab-content is-active" role="tabpanel" aria-labelledby="ud-rating-tab-settings">
             <form method="post" action="options.php">
                 <?php
                 settings_fields('ud_rating_settings_group');
@@ -290,7 +291,7 @@ function ud_rating_render_settings_page() {
         </section>
 
         <!-- Bewertungen -->
-        <section id="tab-reviews" class="ud-tab-content">
+        <section id="tab-reviews" class="ud-tab-content" role="tabpanel" aria-labelledby="ud-rating-tab-reviews">
 
             <h2><?php esc_html_e('Bewertungsübersicht', 'rating-block-ud'); ?></h2>
 
@@ -488,16 +489,37 @@ add_action('admin_footer', function () {
             const params = new URLSearchParams(window.location.search);
             const active = params.get('tab') || 'tab-settings';
 
-            buttons.forEach(b => b.classList.toggle('is-active', b.dataset.tab === active));
+            buttons.forEach(b => {
+                const isActive = b.dataset.tab === active;
+                b.classList.toggle('is-active', isActive);
+                b.setAttribute('aria-selected', String(isActive));
+                b.tabIndex = isActive ? 0 : -1;
+            });
             tabs.forEach(t => t.classList.toggle('is-active', t.id === active));
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const target = btn.dataset.tab;
-                    buttons.forEach(b => b.classList.remove('is-active'));
+                    buttons.forEach(b => {
+                        b.classList.remove('is-active');
+                        b.setAttribute('aria-selected', 'false');
+                        b.tabIndex = -1;
+                    });
                     tabs.forEach(t => t.classList.remove('is-active'));
                     btn.classList.add('is-active');
+                    btn.setAttribute('aria-selected', 'true');
+                    btn.tabIndex = 0;
                     document.getElementById(target)?.classList.add('is-active');
+                });
+
+                btn.addEventListener('keydown', event => {
+                    if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+                    event.preventDefault();
+                    const current = Array.from(buttons).indexOf(btn);
+                    const direction = event.key === 'ArrowRight' ? 1 : -1;
+                    const next = buttons[(current + direction + buttons.length) % buttons.length];
+                    next.click();
+                    next.focus();
                 });
             });
         });

@@ -1,244 +1,257 @@
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/css/settings.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************/
-@charset "UTF-8";
-/* ================================================
-   🎛️  UD Rating Settings – Layout & Optik
-   ================================================ */
 .ud-rating-settings-wrap {
-  max-width: 900px;
-}
-.ud-rating-settings-wrap h1 {
-  margin-bottom: 1em;
-}
-/* Tabs */
-.ud-rating-tabs {
-  margin-bottom: 1.5em;
-  display: flex;
-  gap: 0.5em;
-}
-.ud-rating-tabs .ud-tab-button {
-  background: #f0f0f1;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 6px 14px;
-  cursor: pointer;
-  font-weight: 500;
-}
-.ud-rating-tabs .ud-tab-button.is-active {
-  background: #0073aa;
-  border-color: #0073aa;
-  color: #fff;
-}
-/* Sections */
-.form-table {
-  margin-top: 1.2em;
-  margin-bottom: 2em;
-  width: 100%;
-  max-width: 700px;
-  border-collapse: collapse;
-}
-.form-table th {
-  width: 260px;
-  padding: 8px 12px;
-  vertical-align: top;
-  text-align: left;
-  font-weight: 600;
-}
-.form-table td {
-  padding: 8px 12px;
-}
-.form-table input[type=text],
-.form-table input[type=url],
-.form-table input[type=number],
-.form-table textarea {
-  width: 100%;
-  max-width: 480px;
-}
-.form-table p.description {
-  font-size: 12.5px;
-  color: #555;
-  margin-top: 4px;
-  margin-bottom: 0;
-}
-/* Ulrich.digital – Readonly-Infofelder */
-.form-table input[readonly] {
-  background: #f9fafb;
-  border-color: #d6d9dc;
-  cursor: default;
-  color: #333;
-}
-.form-table input[readonly] + p.description {
-  color: #777;
-  font-style: italic;
-}
-/* Bewertungen-Tab */
-#tab-reviews table.widefat {
-  margin-top: 1em;
-}
-/* ================================================
-   🧭 UD Rating Block – Admin Dashboard Style
-   ================================================ */
-.ud-rating-settings-wrap {
-  max-width: 960px;
-  margin-top: 1.5rem;
-}
-/* Tabs oben */
-.ud-rating-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-.ud-tab-button {
-  background: #f6f7f7;
-  border: 1px solid #ccd0d4;
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-weight: 500;
+  --ud-admin-radius: 12px;
+  max-width: 1120px;
+  margin: 32px 20px 0 0;
   color: #1d2327;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
-.ud-tab-button:hover {
-  background: #e9eaec;
-}
-.ud-tab-button.is-active {
-  background: #0073aa;
-  border-color: #0073aa;
-  color: #fff;
-}
-/* Abschnitts-Cards */
-.form-table {
-  background: #fff;
-  padding: 1.2rem 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-.form-table td {
-  padding: 1rem 1.5rem;
-}
-/* Headings mit Emoji / Icon */
-h2 {
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.15rem;
+.ud-rating-settings-wrap > h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 32px;
   font-weight: 600;
+  line-height: 1.2;
+}
+.ud-rating-settings-wrap .ud-rating-settings-intro {
+  max-width: 680px;
+  margin: 8px 0 0;
+  color: #646970;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.ud-rating-settings-wrap .ud-rating-tabs {
   display: flex;
-  align-items: center;
-  gap: 0.5em;
+  gap: 8px;
+  box-sizing: border-box;
+  margin: 28px 0 32px;
+  padding: 0;
 }
-#ud_rating_section_general h2::before {
-  content: "🧩";
-}
-#ud_rating_section_display h2::before {
-  content: "🎉";
-}
-#ud_rating_section_texts h2::before {
-  content: "💬";
-}
-#ud_rating_section_logic h2::before {
-  content: "⭐";
-}
-/* Tabelle innerhalb Cards */
-.form-table th {
-  width: 260px;
+.ud-rating-settings-wrap .ud-tab-button {
+  min-height: 38px;
+  padding: 0 18px;
+  border: 1px solid #c3c4c7;
+  border-radius: 6px;
+  background: #fff;
+  color: #1d2327;
+  font-size: 14px;
   font-weight: 600;
-  padding: 8px 12px;
-  color: #222;
+  cursor: pointer;
+  transition: background 150ms ease, box-shadow 150ms ease, color 150ms ease;
 }
-.form-table td {
-  padding: 8px 12px;
+.ud-rating-settings-wrap .ud-tab-button:hover {
+  background: #f6f7f7;
 }
-/* Inputs */
-.form-table input[type=text],
-.form-table input[type=url],
-.form-table input[type=number],
-.form-table textarea {
-  width: 100%;
-  max-width: 480px;
-  border-radius: 4px;
-  border: 1px solid #ccd0d4;
-  padding: 6px 8px;
-  font-size: 13px;
-  transition: border-color 0.2s ease;
+.ud-rating-settings-wrap .ud-tab-button:focus-visible {
+  outline: 2px solid #2271b1;
+  outline-offset: 2px;
 }
-.form-table input:focus,
-.form-table textarea:focus {
-  border-color: #0073aa;
-  box-shadow: 0 0 0 1px #0073aa;
-  outline: none;
+.ud-rating-settings-wrap .ud-tab-button.is-active {
+  border-color: #1d2327;
+  background: #1d2327;
+  color: #fff;
+  box-shadow: none;
 }
-/* Beschreibungstexte */
-.form-table p.description {
-  font-size: 12.5px;
-  color: #555;
-  margin-top: 4px;
-  margin-bottom: 0;
-}
-/* Readonly (Ulrich.digital) */
-.form-table input[readonly] {
-  background: #f9fafb;
-  border-color: #d6d9dc;
-  cursor: default;
-  color: #444;
-}
-.form-table input[readonly] + p.description {
-  color: #777;
-  font-style: italic;
-}
-/* Confetti Toggle schöner */
-input[type=checkbox] {
-  transform: scale(1.2);
-  margin-right: 6px;
-}
-/* Bewertungen-Tabelle */
-#tab-reviews table.widefat {
-  margin-top: 1em;
-  border-radius: 12px;
-  overflow: hidden;
-}
-/* Nur der aktive Tab ist sichtbar */
-.ud-tab-content {
+.ud-rating-settings-wrap .ud-tab-content {
   display: none;
 }
-.ud-tab-content.is-active {
+.ud-rating-settings-wrap .ud-tab-content.is-active {
   display: block;
 }
-/* =============================================================== *\
-   Title
-\* =============================================================== */
-.ud-rating-summary {
-  background: white;
-  border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 2em;
-  border: 1px solid #c3c4c7;
+.ud-rating-settings-wrap #tab-settings h2,
+.ud-rating-settings-wrap #tab-reviews > h2 {
+  margin: 32px 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
 }
-.ud-rating-summary__row {
+.ud-rating-settings-wrap #tab-settings h2:first-of-type,
+.ud-rating-settings-wrap #tab-reviews > h2:first-child {
+  margin-top: 0;
+}
+.ud-rating-settings-wrap .form-table {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 28px;
+  border: 1px solid #dcdcde;
+  border-spacing: 0;
+  border-radius: var(--ud-admin-radius);
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+.ud-rating-settings-wrap .form-table tr:not(:last-child) th,
+.ud-rating-settings-wrap .form-table tr:not(:last-child) td {
+  border-bottom: 1px solid #f0f0f1;
+}
+.ud-rating-settings-wrap .form-table th {
+  width: 34%;
+  box-sizing: border-box;
+  padding: 16px 22px;
+  color: #1d2327;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  vertical-align: top;
+}
+.ud-rating-settings-wrap .form-table td {
+  box-sizing: border-box;
+  padding: 12px 22px;
+  vertical-align: middle;
+}
+.ud-rating-settings-wrap .form-table input[type=text],
+.ud-rating-settings-wrap .form-table input[type=url],
+.ud-rating-settings-wrap .form-table input[type=datetime-local],
+.ud-rating-settings-wrap .form-table textarea {
+  width: 100%;
+  max-width: 620px;
+  min-height: 36px;
+  box-sizing: border-box;
+  padding: 7px 11px;
+  border: 1px solid #c3c4c7;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.ud-rating-settings-wrap .form-table input[type=datetime-local] {
+  max-width: 320px;
+}
+.ud-rating-settings-wrap .form-table input[type=number] {
+  width: 120px;
+  min-height: 36px;
+  box-sizing: border-box;
+  padding: 7px 11px;
+  border: 1px solid #c3c4c7;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.ud-rating-settings-wrap .form-table input:focus,
+.ud-rating-settings-wrap .form-table textarea:focus {
+  border-color: #2271b1;
+  box-shadow: 0 0 0 1px #2271b1;
+  outline: none;
+}
+.ud-rating-settings-wrap .form-table input[type=checkbox] {
+  margin: 1px 8px 0 0;
+  vertical-align: top;
+}
+.ud-rating-settings-wrap .form-table label {
+  display: inline-flex;
+  align-items: flex-start;
+  max-width: 620px;
+  line-height: 1.5;
+}
+.ud-rating-settings-wrap .form-table p.description {
+  max-width: 620px;
+  margin: 6px 0 0;
+  color: #646970;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.ud-rating-settings-wrap .form-table input[readonly] {
+  background: #f6f7f7;
+  border-color: #dfe1e3;
+  color: #777;
+  cursor: default;
+}
+.ud-rating-settings-wrap .form-table input[readonly] + p.description {
+  margin: 4px 0 12px;
+  color: #777;
+  font-style: normal;
+}
+.ud-rating-settings-wrap #tab-settings .submit {
+  margin: -4px 0 32px;
+  padding: 0;
+}
+.ud-rating-settings-wrap #tab-settings .submit .button-primary {
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: 6px;
+}
+.ud-rating-settings-wrap .ud-rating-summary {
+  display: grid;
+  gap: 8px;
+  box-sizing: border-box;
+  margin: 0 0 28px;
+  padding: 20px 24px;
+  border: 1px solid #dcdcde;
+  border-radius: var(--ud-admin-radius);
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.ud-rating-settings-wrap .ud-rating-summary__row {
   display: flex;
   align-items: center;
-  gap: 0.4em;
+  gap: 7px;
+  line-height: 1.45;
 }
-.ud-rating-summary__label {
+.ud-rating-settings-wrap .ud-rating-summary__label {
   flex-shrink: 0;
 }
-.ud-rating-summary__stars {
+.ud-rating-settings-wrap .ud-rating-summary__value {
+  font-weight: 600;
+}
+.ud-rating-settings-wrap .ud-rating-summary__stars {
   display: flex;
   align-items: center;
-  gap: 0;
 }
-.ud-star {
+.ud-rating-settings-wrap .ud-star {
   width: 20px;
   height: 20px;
 }
-.ud-star__path {
-  stroke: #fabb05;
+.ud-rating-settings-wrap .ud-star__path {
+  stroke: #efb942;
   stroke-width: 2px;
 }
-.ud-rating-summary__value {
-  margin-left: 0px;
-  font-weight: 600;
+.ud-rating-settings-wrap #tab-reviews table.widefat {
+  margin-top: 12px;
+  border-color: #dcdcde;
+  border-radius: var(--ud-admin-radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+.ud-rating-settings-wrap #tab-reviews select,
+.ud-rating-settings-wrap #tab-reviews .button {
+  min-height: 36px;
+  border-radius: 6px;
+}
+@media (max-width: 782px) {
+  .ud-rating-settings-wrap {
+    margin-top: 24px;
+  }
+  .ud-rating-settings-wrap > h1 {
+    font-size: 27px;
+  }
+  .ud-rating-settings-wrap .form-table {
+    display: block;
+  }
+  .ud-rating-settings-wrap .form-table tbody,
+  .ud-rating-settings-wrap .form-table tr,
+  .ud-rating-settings-wrap .form-table th,
+  .ud-rating-settings-wrap .form-table td {
+    display: block;
+    width: 100%;
+  }
+  .ud-rating-settings-wrap .form-table tr {
+    padding: 16px 18px;
+  }
+  .ud-rating-settings-wrap .form-table tr:not(:last-child) {
+    border-bottom: 1px solid #f0f0f1;
+  }
+  .ud-rating-settings-wrap .form-table tr:not(:last-child) th,
+  .ud-rating-settings-wrap .form-table tr:not(:last-child) td {
+    border-bottom: 0;
+  }
+  .ud-rating-settings-wrap .form-table th {
+    padding: 0 0 8px;
+  }
+  .ud-rating-settings-wrap .form-table td {
+    padding: 0;
+  }
 }
 
 /*# sourceMappingURL=settings-style.css.map*/

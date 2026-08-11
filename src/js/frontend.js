@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			panel.hidden = !open;
 			launcher.setAttribute("aria-expanded", String(open));
 			block.classList.toggle("is-open", open);
+			document.body.classList.toggle("ud-rating-dialog-open", open);
 
 			if (open) {
 				window.requestAnimationFrame(() => {
@@ -153,6 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			setPanelOpen(panel.hidden);
 		});
 
+		block.addEventListener("click", (event) => {
+			if (event.target === block && !panel.hidden) setPanelOpen(false);
+		});
+
 		closeButton?.addEventListener("click", () => setPanelOpen(false));
 
 		starButtons.forEach((button, index) => {
@@ -196,7 +201,30 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 
 		block.addEventListener("keydown", (event) => {
-			if (event.key === "Escape" && !panel.hidden) setPanelOpen(false);
+			if (panel.hidden) return;
+			if (event.key === "Escape") {
+				setPanelOpen(false);
+				return;
+			}
+			if (event.key !== "Tab") return;
+
+			const focusable = Array.from(
+				panel.querySelectorAll(
+					'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+				)
+			).filter((element) => !element.hidden && element.offsetParent !== null);
+
+			if (!focusable.length) return;
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+
+			if (event.shiftKey && document.activeElement === first) {
+				event.preventDefault();
+				last.focus();
+			} else if (!event.shiftKey && document.activeElement === last) {
+				event.preventDefault();
+				first.focus();
+			}
 		});
 	});
 });
