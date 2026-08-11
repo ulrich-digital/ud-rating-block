@@ -22,7 +22,10 @@ Interaktiver WordPress-Block für Sternebewertungen und ergänzende Kommentare. 
 *Frontend-Ansicht vor der Sterneauswahl.*
 
 ![Bewertungsdialog mit ausgefüllten Sternen](./assets/ud-rating-block-02-v2.png)
-*Frontend-Ansicht des Bewertungsdialogs.*
+*Nach der Sterneauswahl verbindet der Dialog die Bewertung mit einem Kommentarfeld.*
+
+![Bewertungsdialog mit Google-Verknüpfung](./assets/ud-rating-block-03-v2.png)
+*Nach dem übermittelten Kommentar erscheint die freiwillige Google-Verknüpfung.*
 
 ![Auswertung gespeicherter Bewertungen](./assets/editor-view.png)
 *Administrationsansicht mit Statistik, Filtern und Einzelbewertungen.*
