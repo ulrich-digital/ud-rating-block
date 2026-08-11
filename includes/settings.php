@@ -206,8 +206,8 @@ add_action('admin_init', function () {
     ]);
     add_settings_field(
         'ud_rating_enable_confetti',
-        __('Confetti-Splash aktivieren', 'rating-block-ud'),
-        fn() => print('<label><input type="checkbox" name="ud_rating_enable_confetti" value="1" ' . checked(get_option('ud_rating_enable_confetti', false), true, false) . '> ' . esc_html__('Zeigt beim erfolgreichen Absenden eine kurze Konfetti-Animation.', 'rating-block-ud') . '</label>'),
+        __('Bestätigungsanimation aktivieren', 'rating-block-ud'),
+        fn() => print('<label><input type="checkbox" name="ud_rating_enable_confetti" value="1" ' . checked(get_option('ud_rating_enable_confetti', false), true, false) . '> ' . esc_html__('Animiert die gewählten Sterne nach erfolgreicher Speicherung mit einem kurzen Lichtimpuls.', 'rating-block-ud') . '</label>'),
         'ud_rating_settings',
         'ud_rating_section_display'
     );

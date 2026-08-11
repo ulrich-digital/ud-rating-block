@@ -1,35 +1,11 @@
 import apiFetch from "@wordpress/api-fetch";
-import confetti from "canvas-confetti";
 
-function triggerConfettiForward(block) {
+function triggerConfirmationAnimation(block) {
 	if (!block) return;
 
-	// Kachel-Position im Viewport ermitteln
-	const rect = block.getBoundingClientRect();
-	// Mittelpunkt der Kachel als Startpunkt für das Confetti
-	const x = (rect.left + rect.width / 2) / window.innerWidth;
-	const y = (rect.top + rect.height / 2) / window.innerHeight;
-
-	const base = {
-		origin: { x, y },
-		startVelocity: 40,
-		spread: 360,
-		gravity: 0.5,
-		decay: 0.86,
-		scalar: 1,
-		ticks: 180,
-		zIndex: 9999,
-		colors: [
-			"#00bcd4", // Türkis (Cyan)
-			"#ff4081", // Magenta-Pink
-			"#ffd740", // Warmes Gelb
-			"#7c4dff", // Lila
-			"#4caf50", // Grün
-			"#ff6f61", // Koralle
-		],
-	};
-
-	confetti({ ...base, particleCount: 60 });
+	block.classList.remove("is-celebrating");
+	void block.offsetWidth;
+	block.classList.add("is-celebrating");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -68,6 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		const stars = block.querySelectorAll(".ud-rating-block__stars svg");
+		stars.forEach((star, index) => {
+			star.style.setProperty("--ud-rating-star-index", index);
+		});
 		const thankyou = block.querySelector(".ud-rating-block__thankyou");
 		const googleSection = block.querySelector(".ud-rating-block__google");
 		const commentSection = block.querySelector(".ud-rating-block__comment");
@@ -131,8 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
 						method: "POST",
 						data: { rating: currentRating, user_id: userId },
 					});
-					if (block.dataset.confetti === "1") {
-						triggerConfettiForward(block);
+					if (block.dataset.confirmationAnimation === "1") {
+						triggerConfirmationAnimation(block);
 					}
 				} catch (err) {
 					// Die Kommentar-Schaltfläche ermöglicht einen erneuten Speicherversuch.

@@ -8,7 +8,7 @@ Interaktiver WordPress-Block für Sternebewertungen und ergänzende Kommentare. 
 - Optionales Kommentarfeld nach jeder Bewertung
 - Optionaler Google-Link zum Website-Betreiber oder zu ulrich.digital nach jeder Bewertung
 - Zeitlich begrenzte und verzögerte Einblendung
-- Optionaler Konfetti-Effekt nach erfolgreicher Speicherung
+- Optionale Star-Glow-Bestätigung nach erfolgreicher Speicherung
 - Speicherung in einer eigenen Datenbanktabelle (`wp_ud_rating_reviews`)
 - Administrationsansicht mit Durchschnitt, Filtern und Löschoptionen
 - Konfigurierbare Texte und eigenes Frontend-CSS
@@ -20,8 +20,8 @@ Interaktiver WordPress-Block für Sternebewertungen und ergänzende Kommentare. 
 ![Bewertungsdialog mit ausgefüllten Sternen](./assets/ud-rating-block-02.png)
 *Frontend-Ansicht des Bewertungsdialogs.*
 
-![Bewertungsdialog mit Konfetti](./assets/Confetti-Splash_2.png)
-*Optionale Konfetti-Animation nach der Speicherung.*
+![Ausgefüllter Bewertungsdialog](./assets/ud-rating-block-02.png)
+*Bewertungsdialog nach der Sterneauswahl.*
 
 ![Auswertung gespeicherter Bewertungen](./assets/editor-view.png)
 *Administrationsansicht mit Statistik, Filtern und Einzelbewertungen.*
@@ -65,7 +65,7 @@ Der Link wird nach jeder Sternebewertung angeboten. Die Veröffentlichung einer 
 
 ### Darstellung und Verwaltung
 
-- Konfetti-Animation
+- Star-Glow-Bestätigung mit Rücksicht auf `prefers-reduced-motion`
 - eigenes Frontend-CSS
 - Entwicklermodus
 - Löschen der Bewertungsdaten bei der Deinstallation
@@ -90,7 +90,7 @@ Die Registerkarte **Bewertungen** zeigt:
   - `GET /ud-rating/v1/stats`
 - **Datenbanktabelle:** `wp_ud_rating_reviews`
 - **Attributionsangaben:** `UD_RATING_FALLBACK_LINK`, `UD_RATING_FALLBACK_TEXT`, `UD_RATING_FALLBACK_BUTTON`
-- **Frontend-Bibliotheken:** `@wordpress/api-fetch`, `canvas-confetti`
+- **Frontend-Bibliothek:** `@wordpress/api-fetch`
 - **Styles:** SCSS mit BEM-Klassennamen
 
 ## Autor

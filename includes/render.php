@@ -111,7 +111,7 @@ function ud_rating_render_block(): string {
         ]); ?>
         data-max-displays="<?php echo esc_attr($max_displays); ?>"
         data-google-link="<?php echo esc_url($google_link); ?>"
-        data-confetti="<?php echo get_option('ud_rating_enable_confetti') ? '1' : '0'; ?>"
+        data-confirmation-animation="<?php echo get_option('ud_rating_enable_confetti') ? '1' : '0'; ?>"
         data-delay="<?php echo esc_attr(get_option('ud_rating_display_delay', 0)); ?>"
         data-dev-mode="<?php echo $dev_mode ? '1' : '0'; ?>"
         data-comment-placeholder="<?php echo esc_attr($comment_placeholder); ?>"
@@ -121,6 +121,11 @@ function ud_rating_render_block(): string {
 
         <div class="ud-rating-block__stars" data-rated="0">
             <?php for ($i = 1; $i <= 5; $i++) echo $get_star_svg(false); ?>
+            <span class="ud-rating-block__sparks" aria-hidden="true">
+                <?php for ($i = 1; $i <= 8; $i++) : ?>
+                    <span class="ud-rating-block__spark"></span>
+                <?php endfor; ?>
+            </span>
         </div>
 
         <div class="ud-rating-block__thankyou" hidden>

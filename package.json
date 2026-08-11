@@ -12,7 +12,6 @@
     "@wordpress/scripts": "^30.15.0"
   },
   "dependencies": {
-    "@wordpress/icons": "^10.22.0",
-    "canvas-confetti": "^1.9.4"
+    "@wordpress/icons": "^10.22.0"
   }
 }
