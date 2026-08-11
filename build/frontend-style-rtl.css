@@ -10,14 +10,15 @@
   font-family: inherit;
   color: #362f2f;
   opacity: 0;
-  transform: translateY(12px);
   pointer-events: none;
-  transition: opacity 220ms ease, transform 220ms ease;
+  transition: opacity 220ms ease;
 }
 .ud-rating-block.is-visible {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
+}
+.ud-rating-block.is-visible .ud-rating-block__launcher {
+  transform: translateY(0);
 }
 .ud-rating-block__launcher {
   display: inline-flex;
@@ -36,6 +37,8 @@
   font-weight: 500;
   line-height: 1;
   cursor: pointer;
+  transform: translateY(12px);
+  transition: transform 220ms ease;
 }
 .ud-rating-block__launcher svg {
   flex: 0 0 20px;

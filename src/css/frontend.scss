@@ -14,14 +14,16 @@ $ud-google-panel: #eef1e9;
 	font-family: inherit;
 	color: $ud-text;
 	opacity: 0;
-	transform: translateY(12px);
 	pointer-events: none;
-	transition: opacity 220ms ease, transform 220ms ease;
+	transition: opacity 220ms ease;
 
 	&.is-visible {
 		opacity: 1;
-		transform: translateY(0);
 		pointer-events: auto;
+
+		.ud-rating-block__launcher {
+			transform: translateY(0);
+		}
 	}
 
 	&__launcher {
@@ -41,6 +43,8 @@ $ud-google-panel: #eef1e9;
 		font-weight: 500;
 		line-height: 1;
 		cursor: pointer;
+		transform: translateY(12px);
+		transition: transform 220ms ease;
 
 		svg {
 			flex: 0 0 20px;
