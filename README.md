@@ -97,10 +97,20 @@ Die Registerkarte **Bewertungen** zeigt:
 - **Frontend-Bibliothek:** `@wordpress/api-fetch`
 - **Styles:** SCSS mit BEM-Klassennamen
 
+## Einblicke in die Umsetzung
+
+Der Beitrag gibt Einblick in die entwickelte Lösung und ihre Funktionsweise.
+
+- **Mehr zur Lösung:** [Sternebewertungen und Kommentare in WordPress strukturiert erfassen](https://ulrich.digital/sternebewertungen-und-kommentare-in-wordpress-strukturiert-erfassen/)
+
 ## Autor
 
 [ulrich.digital gmbh](https://ulrich.digital)
 
 ## Lizenz
 
-Alle Rechte vorbehalten. Dieses Plugin ist urheberrechtlich geschützt und darf nur mit ausdrücklicher schriftlicher Genehmigung der ulrich.digital gmbh kopiert, verbreitet, verändert oder weiterverwendet werden.
+Dieses Projekt steht unter der [ulrich.digital Nutzungslizenz 1.0](LICENSE).
+
+Die unveränderte Software darf in eigenen und kommerziellen Projekten eingesetzt werden. Auf jeder öffentlich erreichbaren Website oder Anwendung muss [ulrich.digital gmbh](https://ulrich.digital) im Impressum, in einem Credits-Bereich oder auf einer vergleichbaren Informationsseite genannt werden. Verkauf, eigenständige Weitergabe, Unterlizenzierung und Änderungen bedürfen der vorherigen schriftlichen Zustimmung von ulrich.digital gmbh.
+
+Komponenten Dritter behalten ihre jeweiligen Lizenz- und Nutzungsbedingungen.

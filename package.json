@@ -6,8 +6,8 @@
     "build": "webpack --config webpack.config.js",
     "start": "webpack --watch --config webpack.config.js"
   },
-  "author": "ulrich.digital",
-  "license": "GPL-2.0-or-later",
+  "author": "ulrich.digital gmbh",
+  "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "@wordpress/scripts": "^30.15.0"
   },
